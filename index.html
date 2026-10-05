@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0b1020">
+    <title>PT. ANDIKA SANG PERKASA Tbk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="toastContainer"></div>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand-logo">
+            <div class="logo-box">ASP</div>
+            <div>
+                <strong>ANDIKA</strong>
+                <span>SANG PERKASA Tbk</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+
+            <div class="nav-label">UTAMA</div>
+
+            <button class="nav-item active" data-page="dashboard">
+                <span>⌂</span>
+                <span>Dashboard</span>
+            </button>
+
+            <div class="nav-label">MANAJEMEN</div>
+
+            <button class="nav-item" data-page="brands">
+                <span>◈</span>
+                <span>Brand</span>
+            </button>
+
+            <button class="nav-item" data-page="products">
+                <span>▣</span>
+                <span>Produk</span>
+            </button>
+
+            <button class="nav-item" data-page="stock">
+                <span>▤</span>
+                <span>Stok</span>
+            </button>
+
+            <div class="nav-label">ANALISIS</div>
+
+            <button class="nav-item" data-page="analytics">
+                <span>◒</span>
+                <span>Analytics</span>
+            </button>
+
+            <button class="nav-item" data-page="ai">
+                <span>✦</span>
+                <span>AI Business</span>
+            </button>
+
+            <div class="nav-label">SISTEM</div>
+
+            <button class="nav-item" data-page="backup">
+                <span>⇅</span>
+                <span>Backup & Restore</span>
+            </button>
+
+            <button class="nav-item" data-page="settings">
+                <span>⚙</span>
+                <span>Pengaturan</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="system-status">
+                <i></i>
+                <span>Sistem Aktif</span>
+            </div>
+            <small>PT. ANDIKA SANG PERKASA Tbk</small>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p id="pageSubtitle">Ringkasan kondisi perusahaan</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+
+                <div class="header-date" id="headerDate"></div>
+
+                <button class="icon-button" id="quickBackup" title="Backup Data">
+                    ⇩
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">ASP</div>
+                    <div class="profile-info">
+                        <strong>Administrator</strong>
+                        <span>PT. ANDIKA SANG PERKASA</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <section class="page active" id="page-dashboard">
+
+                <div class="welcome-card">
+
+                    <div>
+                        <span class="eyebrow">EXECUTIVE CONTROL CENTER</span>
+                        <h2>PT. ANDIKA SANG PERKASA Tbk</h2>
+                        <p>
+                            Pusat pengelolaan Brand dan Produk perusahaan.
+                            Pantau performa bisnis dan dapatkan insight berbasis AI.
+                        </p>
+                    </div>
+
+                    <div class="welcome-icon">✦</div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">◈</div>
+                        <div>
+                            <span>Total Brand</span>
+                            <strong id="statBrands">0</strong>
+                            <small>Brand terdaftar</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue">▣</div>
+                        <div>
+                            <span>Total Produk</span>
+                            <strong id="statProducts">0</strong>
+                            <small>Produk terdaftar</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">Rp</div>
+                        <div>
+                            <span>Nilai Inventori</span>
+                            <strong id="statInventory">Rp 0</strong>
+                            <small>Harga modal</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">!</div>
+                        <div>
+                            <span>Stok Menipis</span>
+                            <strong id="statLowStock">0</strong>
+                            <small>Perlu perhatian</small>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Performa Brand</h3>
+                                <p>Distribusi produk setiap brand</p>
+                            </div>
+                            <button class="text-button" data-page-link="brands">
+                                Lihat Semua →
+                            </button>
+                        </div>
+
+                        <div id="dashboardBrands" class="brand-performance"></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>AI Business Insight</h3>
+                                <p>Analisis otomatis sistem</p>
+                            </div>
+                            <button class="ai-badge" data-page-link="ai">
+                                ✦ AI
+                            </button>
+                        </div>
+
+                        <div id="dashboardAI" class="insight-list"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Produk Terbaru</h3>
+                            <p>Produk yang terakhir ditambahkan</p>
+                        </div>
+
+                        <button class="primary-button small" data-page-link="products">
+                            + Produk
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Produk</th>
+                                    <th>Brand</th>
+                                    <th>Kategori</th>
+                                    <th>Harga Jual</th>
+                                    <th>Stok</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="dashboardProducts"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= BRAND ================= -->
+
+            <section class="page" id="page-brands">
+
+                <div class="page-toolbar">
+
+                    <div>
+                        <h2>Manajemen Brand</h2>
+                        <p>Kelola seluruh brand milik perusahaan.</p>
+                    </div>
+
+                    <button class="primary-button" id="addBrandButton">
+                        + Tambah Brand
+                    </button>
+
+                </div>
+
+
+                <div class="summary-strip">
+
+                    <div>
+                        <span>Total Brand</span>
+                        <strong id="brandTotal">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Brand Aktif</span>
+                        <strong id="brandActive">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Total Produk</span>
+                        <strong id="brandProducts">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="brandSearch"
+                        placeholder="Cari brand..."
+                    >
+
+                </div>
+
+
+                <div class="brand-grid" id="brandGrid"></div>
+
+            </section>
+
+
+            <!-- ================= PRODUK ================= -->
+
+            <section class="page" id="page-products">
+
+                <div class="page-toolbar">
+
+                    <div>
+                        <h2>Manajemen Produk</h2>
+                        <p>Kelola produk berdasarkan brand dan kategori.</p>
+                    </div>
+
+                    <button class="primary-button" id="addProductButton">
+                        + Tambah Produk
+                    </button>
+
+                </div>
+
+
+                <div class="summary-strip">
+
+                    <div>
+                        <span>Total Produk</span>
+                        <strong id="productTotal">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Produk Aktif</span>
+                        <strong id="productActive">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Stok Menipis</span>
+                        <strong id="productLow">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Nilai Inventori</span>
+                        <strong id="productValue">Rp 0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="filter-bar">
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input
+                            type="text"
+                            id="productSearch"
+                            placeholder="Cari produk..."
+                        >
+                    </div>
+
+                    <select id="productBrandFilter">
+                        <option value="">Semua Brand</option>
+                    </select>
+
+                    <select id="productStatusFilter">
+                        <option value="">Semua Status</option>
+                        <option value="Aktif">Aktif</option>
+                        <option value="Nonaktif">Nonaktif</option>
+                    </select>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Produk</th>
+                                    <th>Brand</th>
+                                    <th>Kategori</th>
+                                    <th>Harga Modal</th>
+                                    <th>Harga Jual</th>
+                                    <th>Stok</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="productTable"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= STOK ================= -->
+
+            <section class="page" id="page-stock">
+
+                <div class="page-toolbar">
+
+                    <div>
+                        <h2>Manajemen Stok</h2>
+                        <p>Monitor dan lakukan penambahan stok produk.</p>
+                    </div>
+
+                    <button class="primary-button" id="stockInButton">
+                        + Tambah Stok
+                    </button>
+
+                </div>
+
+
+                <div class="stock-alert" id="stockAlert"></div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Status Persediaan</h3>
+                            <p>Monitoring stok seluruh produk.</p>
+                        </div>
+
+                        <div class="legend">
+                            <span><i class="dot green"></i> Aman</span>
+                            <span><i class="dot orange"></i> Menipis</span>
+                            <span><i class="dot red"></i> Habis</span>
+                        </div>
+
+                    </div>
+
+                    <div id="stockList" class="stock-list"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ANALYTICS ================= -->
+
+            <section class="page" id="page-analytics">
+
+                <div class="page-toolbar">
+
+                    <div>
+                        <h2>Business Analytics</h2>
+                        <p>Analisis performa Brand dan Produk.</p>
+                    </div>
+
+                    <button class="secondary-button" id="refreshAnalytics">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+                <div class="analytics-grid">
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Distribusi Produk per Brand</h3>
+                                <p>Jumlah produk masing-masing brand.</p>
+                            </div>
+                        </div>
+
+                        <div id="brandChart" class="bar-chart"></div>
+                    </div>
+
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Distribusi Kategori</h3>
+                                <p>Komposisi produk berdasarkan kategori.</p>
+                            </div>
+                        </div>
+
+                        <div id="categoryChart" class="bar-chart"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Produk dengan Nilai Inventori Terbesar</h3>
+                            <p>Harga modal × stok.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Produk</th>
+                                    <th>Brand</th>
+                                    <th>Stok</th>
+                                    <th>Harga Modal</th>
+                                    <th>Nilai Inventori</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= AI ================= -->
+
+            <section class="page" id="page-ai">
+
+                <div class="ai-hero">
+
+                    <div class="ai-symbol">✦</div>
+
+                    <div>
+                        <span class="eyebrow">ARTIFICIAL INTELLIGENCE</span>
+                        <h2>AI Business Intelligence</h2>
+                        <p>
+                            Sistem menganalisis data Brand, Produk dan Stok
+                            untuk memberikan insight otomatis.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" id="runAIButton">
+                        ✦ Jalankan Analisis
+                    </button>
+
+                </div>
+
+
+                <div class="ai-summary" id="aiSummary"></div>
+
+
+                <div class="ai-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Business Insight</h3>
+                                <p>Temuan utama sistem.</p>
+                            </div>
+                        </div>
+
+                        <div id="aiInsights" class="ai-result-list"></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Rekomendasi</h3>
+                                <p>Saran berdasarkan data.</p>
+                            </div>
+                        </div>
+
+                        <div id="aiRecommendations" class="ai-result-list"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Analisis Produk</h3>
+                            <p>Produk yang perlu diperhatikan.</p>
+                        </div>
+                    </div>
+
+                    <div id="aiProducts" class="ai-product-grid"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= BACKUP ================= -->
+
+            <section class="page" id="page-backup">
+
+                <div class="page-toolbar">
+
+                    <div>
+                        <h2>Backup & Restore</h2>
+                        <p>Amankan seluruh data sistem.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="backup-grid">
+
+                    <div class="backup-card">
+
+                        <div class="backup-icon">⇩</div>
+
+                        <h3>Backup Data</h3>
+
+                        <p>
+                            Simpan seluruh data Brand, Produk, Stok,
+                            pengaturan dan informasi sistem dalam satu file JSON.
+                        </p>
+
+                        <button class="primary-button" id="createBackup">
+                            Download Backup
+                        </button>
+
+                    </div>
+
+
+                    <div class="backup-card">
+
+                        <div class="backup-icon">⇧</div>
+
+                        <h3>Restore Data</h3>
+
+                        <p>
+                            Kembalikan data sistem menggunakan file backup
+                            JSON yang sebelumnya dibuat.
+                        </p>
+
+                        <label class="upload-button">
+                            Pilih File Backup
+                            <input type="file" id="restoreInput" accept=".json,application/json">
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Informasi Data</h3>
+                            <p>Status penyimpanan lokal.</p>
+                        </div>
+                    </div>
+
+                    <div id="backupInfo" class="data-info"></div>
+
+                </div>
+
+
+                <div class="danger-zone">
+
+                    <div>
+                        <h3>Reset Sistem</h3>
+                        <p>
+                            Menghapus seluruh data dan mengembalikan sistem
+                            ke kondisi awal.
+                        </p>
+                    </div>
+
+                    <button class="danger-button" id="resetData">
+                        Reset Semua Data
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SETTINGS ================= -->
+
+            <section class="page" id="page-settings">
+
+                <div class="page-toolbar">
+
+                    <div>
+                        <h2>Pengaturan</h2>
+                        <p>Konfigurasi identitas perusahaan dan sistem.</p>
+                    </div>
+
+                    <button class="primary-button" id="saveSettings">
+                        Simpan Pengaturan
+                    </button>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Identitas Perusahaan</h3>
+                                <p>Informasi utama perusahaan.</p>
+                            </div>
+                        </div>
+
+                        <form id="settingsForm">
+
+                            <div class="form-grid">
+
+                                <div class="form-group full">
+                                    <label>Nama Perusahaan</label>
+                                    <input id="settingCompanyName" type="text">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <input id="settingAddress" type="text">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Kontak</label>
+                                    <input id="settingContact" type="text">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input id="settingEmail" type="email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Mata Uang</label>
+                                    <select id="settingCurrency">
+                                        <option value="IDR">Rupiah (IDR)</option>
+                                        <option value="USD">Dollar (USD)</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Tentang Sistem</h3>
+                                <p>Informasi aplikasi.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-system">
+
+                            <div class="about-logo">ASP</div>
+
+                            <h3>PT. ANDIKA SANG PERKASA Tbk</h3>
+
+                            <p>
+                                Sistem Manajemen Brand & Produk
+                            </p>
+
+                            <span class="version">Version 1.0.0</span>
+
+                            <div class="about-features">
+                                <span>✓ Brand Management</span>
+                                <span>✓ Product Management</span>
+                                <span>✓ Stock Management</span>
+                                <span>✓ Analytics</span>
+                                <span>✓ AI Business</span>
+                                <span>✓ Backup & Restore</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal-overlay" id="modalOverlay">
+
+    <div class="modal" id="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h3 id="modalTitle">Tambah Data</h3>
+                <p id="modalSubtitle"></p>
+            </div>
+
+            <button class="modal-close" id="modalClose">×</button>
+
+        </div>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
+
+
+<script src="data.js"></script>
+<script src="ai-engine.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
